@@ -17,9 +17,21 @@ const Formulario = () => {
         
 // Funcion que se ejecuta cada vez que el usuario escriba en un input
 
-        const actualizarState = () =>{
-            console.log("Escribiendo...");
+        const actualizarState = e =>{
+
+            actualizarCita({
+                // con spreadOperator se crea una copia y no se re.escriba en la proiedad
+                // el Spread sirve tanto como para objetos y arreglos.
+                ...cita,
+                // se re-escribe la informacion del input dentro de la propie. que corresponda
+                [e.target.name] : e.target.value
+                // tomamos una copia y reescribimos.
+            })
         }
+
+        // EXTRAER LOS VALORES
+            // se extraer para evita el cita.mascota cita.fecha etc
+        const {mascota,propietario,fecha,hora,sintomas} = cita;
 
     return (
         <Fragment>
@@ -34,6 +46,9 @@ const Formulario = () => {
         placeholder="Ingrese Nombre Mascota"
         onChange ={actualizarState}
 
+        // para resetearlo
+        value ={mascota}
+
 
         />
         
@@ -44,6 +59,7 @@ const Formulario = () => {
         className="u-full-width"
         placeholder="Ingrese Nombre del  Propietario"
         onChange ={actualizarState}
+        value ={propietario}
 
         />
 
@@ -53,6 +69,7 @@ const Formulario = () => {
         name ="fecha"
         className="u-full-width"
         onChange ={actualizarState}
+        value ={fecha}
 
 
         />
@@ -63,6 +80,8 @@ const Formulario = () => {
         name ="hora"
         className="u-full-width"
         onChange ={actualizarState}
+        value ={hora}
+
 
         />
 
@@ -73,6 +92,8 @@ const Formulario = () => {
         name="sintomas"
         placeholder="Detalle Los Síntomas de su Mascota"
         onChange ={actualizarState}
+        value ={sintomas}
+
 
         ></textarea>
 
