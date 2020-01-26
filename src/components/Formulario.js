@@ -1,8 +1,28 @@
-import React,{Fragment} from 'react'
+import React,{Fragment ,useState} from 'react'
 
 //sfc snippet
-const Formulario = () => (
- <Fragment>
+const Formulario = () => {
+
+    // Antes del Return es buen Lugar para Agregar los State
+
+        // CREAR STATE DE CITAS
+
+        const [cita ,actualizarCita] = useState({
+            mascota:'',
+            propietario:'',
+            fecha:'',
+            hora:'',
+            sintomas:''
+        });
+        
+// Funcion que se ejecuta cada vez que el usuario escriba en un input
+
+        const actualizarState = () =>{
+            console.log("Escribiendo...");
+        }
+
+    return (
+        <Fragment>
      <h2>Crear Cita</h2>
 
      <form>
@@ -12,6 +32,7 @@ const Formulario = () => (
         name ="mascota"
         className="u-full-width"
         placeholder="Ingrese Nombre Mascota"
+        onChange ={actualizarState}
 
 
         />
@@ -22,6 +43,7 @@ const Formulario = () => (
         name ="propietario"
         className="u-full-width"
         placeholder="Ingrese Nombre del  Propietario"
+        onChange ={actualizarState}
 
         />
 
@@ -30,6 +52,7 @@ const Formulario = () => (
         type ="date"
         name ="fecha"
         className="u-full-width"
+        onChange ={actualizarState}
 
 
         />
@@ -39,6 +62,7 @@ const Formulario = () => (
         type ="time"
         name ="hora"
         className="u-full-width"
+        onChange ={actualizarState}
 
         />
 
@@ -48,6 +72,8 @@ const Formulario = () => (
         className="u-full-width"
         name="sintomas"
         placeholder="Detalle Los Síntomas de su Mascota"
+        onChange ={actualizarState}
+
         ></textarea>
 
         <button
@@ -60,7 +86,11 @@ const Formulario = () => (
 
 
  </Fragment>
-)
+    )
+}
+
+
+
  
 export default Formulario;
 
