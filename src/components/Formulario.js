@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import uuid from 'uuid/v4';
 
 //sfc snippet
 const Formulario = () => {
@@ -49,7 +50,8 @@ const Formulario = () => {
         actualizarError(false);
 
         // Asignar un ID
-
+        cita.id = uuid();
+        
         // Crear la cita
 
         // Reiniciar el form
