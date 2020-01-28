@@ -23,7 +23,7 @@ function App() {
 
   const eliminarCita = id =>{
 
-    // el filtro de ser por las que queremos dejar en el state
+    // el filtro debe ser por las que queremos dejar en el state
     // por que eso se quedan las que no se filtran cita.id !== id
     // sin son distintas, se filtran y se muestran en la pagina.
     const nuevasCitas = citas.filter(cita => cita.id !== id);
@@ -32,6 +32,12 @@ function App() {
     // console.log(id);
 
   }
+
+  // Mensaje condicional
+  // condiciona el mensaje siempre que existan o no citas guardadas en el state
+
+  const titulo = citas.length === 0 ? 'No Hay Citas' : 'Administrador Citas'
+
 
   return (
     <Fragment>
@@ -46,7 +52,7 @@ function App() {
           />
         </div>
         <div className="one-half column">
-          <h2>Administrador Pacientes</h2>
+          <h2>{titulo}</h2>
             {citas.map(cita =>(
               <Cita
                 key={cita.id}
