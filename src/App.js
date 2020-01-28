@@ -19,6 +19,19 @@ function App() {
   ...citas , cita]);
   }
 
+  // Funcion que elimina una Cita por el ID
+
+  const eliminarCita = id =>{
+
+    // el filtro de ser por las que queremos dejar en el state
+    // por que eso se quedan las que no se filtran cita.id !== id
+    // sin son distintas, se filtran y se muestran en la pagina.
+    const nuevasCitas = citas.filter(cita => cita.id !== id);
+    guadarCitas(nuevasCitas);
+    //clg para revisar si elimina
+    // console.log(id);
+
+  }
 
   return (
     <Fragment>
@@ -38,6 +51,7 @@ function App() {
               <Cita
                 key={cita.id}
                 cita={cita}
+                eliminarCita={eliminarCita}
 
               />
             ))}

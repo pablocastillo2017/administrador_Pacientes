@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cita = ({cita}) => (
+const Cita = ({cita ,eliminarCita}) => (
     
     <div className="cita">
     
@@ -10,6 +10,13 @@ const Cita = ({cita}) => (
     <p>hora: <span>{cita.hora}</span></p>
     <p>sintomas: <span>{cita.sintomas}</span></p>
 
+            <button
+            type="submit"
+            className="button eliminar u-full-width"
+// si se coloca de esta forma eliminarCita() , se esta llamando a la funcion
+// debe ser una arrow funcion para que espera el click ()=>{}
+            onClick={()=> eliminarCita(cita.id)}
+            >Eliminar &times;</button>
 
     </div>
 );
