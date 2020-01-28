@@ -56,7 +56,16 @@ const Formulario = ({crearCita}) => {
 
         crearCita(cita);
 
-        // Reiniciar el form
+// Reiniciar el formulario para que no queden los registros en el form
+// una vez que se agrega la cita
+        actualizarCita({
+            mascota: '',
+            propietario: '',
+            fecha: '',
+            hora: '',
+            sintomas: ''   
+        })
+
 
     }
 
