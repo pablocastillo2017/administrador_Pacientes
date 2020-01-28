@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import uuid from 'uuid/v4';
 
 //sfc snippet
-const Formulario = () => {
+const Formulario = ({crearCita}) => {
 
 // Antes del Return es buen Lugar para Agregar los State
 
@@ -53,6 +53,8 @@ const Formulario = () => {
         cita.id = uuid();
         
         // Crear la cita
+
+        crearCita(cita);
 
         // Reiniciar el form
 
