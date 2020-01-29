@@ -1,4 +1,4 @@
-import React ,{Fragment,useState} from 'react';
+import React ,{Fragment,useState ,useEffect} from 'react';
 import Formulario from './components/Formulario';
 import Cita from './components/Cita';
 
@@ -10,6 +10,12 @@ function App() {
   // Snipet useS
 
   const [citas, guadarCitas] = useState([]);
+
+  // Use Effect, para realizar ciertas operaciones cuando el state cambia
+  // cada vez que el State cambia se activa el useEffect()
+  useEffect( () => {
+      console.log('Listo')
+  });
 
   // Funcion que tome las citas actuales y agregue la nueva
   const crearCita = cita =>{
