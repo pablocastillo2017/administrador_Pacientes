@@ -6,21 +6,38 @@ import Cita from './components/Cita';
 
 function App() {
 
+  // Citas en local Storage
+  // localStorage solo almacena stings con JSON.parse convierte el arreglo dentro de un String
+   
+
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+  if(!citasIniciales) {
+    citasIniciales = [];
+  }
+
+
   // Arreglo de Citas
   // Snipet useS
 
-  const [citas, guadarCitas] = useState([]);
+  const [citas, guardarCitas] = useState(citasIniciales);
 
   // Use Effect, para realizar ciertas operaciones cuando el state cambia
   // cada vez que el State cambia se activa el useEffect()
+  // siempre hay que pasarle un [], para que se ejecute 1 vez.
   useEffect( () => {
-      console.log('Listo')
-  });
+    let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+
+    if(citasIniciales) {
+      localStorage.setItem('citas', JSON.stringify(citas))
+    } else {
+      localStorage.setItem('citas', JSON.stringify([]));
+    }
+}, [citas] );
 
   // Funcion que tome las citas actuales y agregue la nueva
   const crearCita = cita =>{
 
-    guadarCitas([
+    guardarCitas([
       // copia del state
   ...citas , cita]);
   }
@@ -33,7 +50,7 @@ function App() {
     // por que eso se quedan las que no se filtran cita.id !== id
     // sin son distintas, se filtran y se muestran en la pagina.
     const nuevasCitas = citas.filter(cita => cita.id !== id);
-    guadarCitas(nuevasCitas);
+    guardarCitas(nuevasCitas);
     //clg para revisar si elimina
     // console.log(id);
 
